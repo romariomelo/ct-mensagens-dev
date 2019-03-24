@@ -13,12 +13,12 @@ itemMensagem = function(mensagem, config) {
     return `
     <div class="row inbox-row ${classNoRead}">
         <div class="col col-xs-12 col-sm-3 col-sm-push-9 text-right">
-            <!-- button class="btn btn-default">
+            <button class="btn btn-default" title="Excluir Mensagem">
                 <i class="fa fa-trash"></i>
-            </button -->
-            <!-- button class="btn btn-default">
+            </button>
+            <button class="btn btn-default" title="Responder">
                 <i class="fa fa-reply"></i>
-            </button -->
+            </button>
             <button class="btn btn-default" title="Marcar mensagem como não lida">
                 <i class="fa fa-envelope"></i>
             </button>
