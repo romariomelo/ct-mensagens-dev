@@ -2,24 +2,24 @@
 caixaDeEntrada = function(mensagens, config) {
     var html = '';
     mensagens.forEach((mensagem) => {
-        html += itemMensagem(mensagem, config)
+        html += itemCaixaDeEntrada(mensagem, config)
     })
     return html;
 }
 
-itemMensagem = function(mensagem, config) {
+itemCaixaDeEntrada = function(mensagem, config) {
     var classNoRead = (mensagem.read_at === null) ? 'no-read' : '';
     let foto = ( mensagem.alerta.user.foto === null ) ? config.base_url + '/images/sem_foto.jpg' : config.webservice_url + '/Usuario/' + mensagem.alerta.user.foto;
     return `
-    <div class="row inbox-row ${classNoRead}">
+    <div class="row inbox-row ${classNoRead}" data-codigo="${mensagem.alerta.codigo}">
         <div class="col col-xs-12 col-sm-3 col-sm-push-9 text-right">
-            <button class="btn btn-default" title="Excluir Mensagem">
+            <button class="btn btn-default btn-excluir" title="Excluir Mensagem">
                 <i class="fa fa-trash"></i>
             </button>
-            <button class="btn btn-default" title="Responder">
+            <button class="btn btn-default btn-responder" title="Responder">
                 <i class="fa fa-reply"></i>
             </button>
-            <button class="btn btn-default" title="Marcar mensagem como não lida">
+            <button class="btn btn-default btn-marcar-como-nao-lida" title="Marcar mensagem como não lida">
                 <i class="fa fa-envelope"></i>
             </button>
         </div>
