@@ -1,6 +1,23 @@
 /*
 MENSAGENS
  */
+
+.dropdown-menu .divider {
+  margin: 0;
+}
+
+li {
+  &.notification-item {
+    overflow: auto;
+    &:hover {
+      background-color: #f7f7f7;
+    }
+  }
+}
+.dropdown-messages {
+  padding: 0 !important;
+}
+
 .no-read {
   background-color: #f3f3f4;
 }
