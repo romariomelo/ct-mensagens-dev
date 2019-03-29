@@ -5,7 +5,7 @@ module.exports = {
     mode: 'development',
     output: {
         filename: 'main.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist\\js')
     }
 };
 
@@ -14,6 +14,6 @@ module.exports = {
     mode: 'development',
     output: {
         filename: 'main.js',
-        path: 'C:\\ProjetosWeb\\colegiotimbaubense\\professor\\node_modules\\ct-mensagem\\dist' //path.resolve(__dirname, 'dist')
+        path: 'C:\\ProjetosWeb\\colegiotimbaubense\\professor\\node_modules\\ct-mensagem\\dist\\js'
     }
 };

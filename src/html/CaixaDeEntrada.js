@@ -51,7 +51,7 @@ itemCaixaDeEntrada = function(mensagem, config) {
             </a>
         </div>
     </div>
-    `
+    `;
 }
 
 var btnExcluir = function(mensagem) {
