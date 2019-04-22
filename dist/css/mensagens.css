@@ -40,6 +40,10 @@ li.notification-item {
   border-bottom: thin solid #ddd;
   padding-top: 10px;
   padding-bottom: 10px; }
+  .inbox-row p {
+    color: #2f4050; }
+  .inbox-row small {
+    color: #b4b4b4; }
   .inbox-row .inbox-avatar {
     padding: 0; }
     .inbox-row .inbox-avatar img {

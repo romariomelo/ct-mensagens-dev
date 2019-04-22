@@ -1,0 +1,40 @@
+.ct-toast {
+  background-color: #23c6c8;
+  color: #fff;
+  position: fixed;
+  z-index: 25300;
+  bottom: 15px;
+  right: 15px;
+  border-radius: 5px;
+  min-width: 250px;
+  min-height: 100px;
+  width: 90%;
+  margin: 0 auto;
+  border: thin solid #ddd;
+  padding: 15px;
+  display: none;
+  a {
+    color: #fff;
+  }
+  .img {
+    width: 100px;
+    margin: 0 auto;
+    height: auto;
+    margin-bottom: 15px;
+  }
+  .lbl {
+    text-align: center;
+  }
+  .toast-close {
+    position: absolute;
+    right: 15px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+
+  .ct-toast {
+    width: 300px;
+  }
+
+}

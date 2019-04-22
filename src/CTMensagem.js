@@ -1,6 +1,7 @@
 var caixaDeEntrada = require('./html/CaixaDeEntrada');
 var ultimasMensagens = require('./html/UltimasMensagens');
 var responder = require('./html/Responder');
+var ConversaHTML = require('./html/ConversaHTML');
 
 class CTMensagem {
 
@@ -46,6 +47,10 @@ class CTMensagem {
 
     }
 
+    renderConversa( conversa, elemento ) {
+        $( elemento ).html( ConversaHTML( conversa, this.config ) );
+    }
+
     setMensagens(mensagens) {
 
         if ( ! Array.isArray(this.mensagens) ) {
@@ -54,7 +59,10 @@ class CTMensagem {
         }
 
         this.mensagens = mensagens;
+    }
 
+    getMensagens() {
+        return this.mensagens;
     }
 
     btnLidaNaoLidaClick(fn) {
@@ -87,7 +95,7 @@ class CTMensagem {
 
             $('.btn-responder').click(function(){
 
-                var id = $(this).closest('.inbox-row').attr('data-codigo');
+                var id = $(this).closest('.ct-info-mensagem').attr('data-codigo');
 
                 var mensagem = ctMensagem.getMsgById( id );
 
@@ -100,7 +108,6 @@ class CTMensagem {
 
     }
 
-
     btnExcluirClick(fn) {
 
         if ( typeof fn === 'function') {
@@ -109,7 +116,7 @@ class CTMensagem {
 
             $('.btn-excluir').click(function(){
 
-                var id = $(this).closest('.inbox-row').attr('data-codigo');
+                var id = $(this).closest('.ct-info-mensagem').attr('data-codigo');
 
                 var mensagem = ctMensagem.getMsgById( id );
 
@@ -128,7 +135,7 @@ class CTMensagem {
 
             let ctMensagem = this;
 
-            $('#ctM_btnEnviar').click(function() {
+            $('#ctM_btnEnviarResposta').click(function() {
 
                 let divResponder = $(this).closest('#ctM_divResponderRenderized');
 
@@ -151,6 +158,38 @@ class CTMensagem {
 
     }
 
+    btnNovaMensagemClick(fn) {
+
+        if (typeof fn === 'function') {
+
+            $('#bt-nova-mensagem').click(function() {
+
+                fn();
+
+            });
+
+        }
+
+    }
+
+    btnCaixaDeEntradaClick(fn) {
+
+        if (typeof fn === 'function') {
+
+            $('#bt-caixa-de-entrada').click(function() {
+
+                fn();
+
+            });
+
+        } else {
+
+            console.error('Parâmetro deve ser função.');
+
+        }
+
+    }
+
     getMsgById(id) {
         if ( Array.isArray(this.mensagens) ) {
             let rMsg = null;
@@ -164,6 +203,20 @@ class CTMensagem {
         } else {
             console.error('Mensagens devem ser Array.');
         }
+    }
+
+    setTitulo(titulo) {
+        $('#iboxCaixaDeEntrada h5').text(titulo);
+    }
+
+    /* BUTTONS */
+
+    getCaixaDeEntradaButton() {
+        return $('#bt-caixa-de-entrada');
+    }
+
+    getNovaMensagemButton() {
+        return $('#bt-nova-mensagem');
     }
 
 }

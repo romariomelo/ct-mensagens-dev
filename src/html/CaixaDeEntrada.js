@@ -7,9 +7,14 @@ caixaDeEntrada = function(mensagens, config) {
     }
 
     var html = cabecalhoCaixaDeEntrada(config);
+
+    html += '<div id="ctM_corpo_caixaDeEntrada">';
+
     mensagens.forEach((mensagem) => {
         html += itemCaixaDeEntrada(mensagem, config)
-    })
+    });
+
+    html += '</div>';
     return html;
 }
 
@@ -32,7 +37,7 @@ itemCaixaDeEntrada = function(mensagem, config) {
     let titulo = fn.lerMais(mensagem.alerta.titulo);
 
     return `
-    <div class="row inbox-row ${classNoRead}" data-codigo="${mensagem.alerta.codigo}">
+    <div class="row inbox-row ct-info-mensagem ${classNoRead}" data-codigo="${mensagem.alerta.codigo}">
         <div class="col col-xs-12 col-sm-3 col-sm-push-9 text-right">
             ${btnExcluir(mensagem)}
             ${btnResponser(mensagem)}
@@ -47,6 +52,7 @@ itemCaixaDeEntrada = function(mensagem, config) {
             <a href="${config.base_url}/avisos/mensagens/${mensagem.alerta.codigo}">
                 <h4 class="inbox-nome">${mensagem.alerta.user.name}</h4>
                 <h5 class="inbox-assunto">${titulo}</h5>
+                <p>${mensagem.alerta.texto}</p>
                 <small>${moment(mensagem.alerta.created_at).format('DD/MM/YYYY')}</small>
             </a>
         </div>
