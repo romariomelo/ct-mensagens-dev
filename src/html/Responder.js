@@ -1,16 +1,13 @@
 var fn = require("../funcoes/fn");
 
 responder = function(mensagem, config) {
+
     return getResponderBoxHtml(mensagem, config);
 }
 
 var getResponderBoxHtml = function(mensagem, config) {
     let titulo = ( mensagem.alerta.titulo.substring(0, 3) === 'RE:' ) ? mensagem.alerta.titulo : 'RE: ' + mensagem.alerta.titulo;
-    let data = moment( mensagem.alerta.created_at ).format('DD/MM/YYYY') + ' as ' + moment( mensagem.alerta.created_at ).format('HH:mm');
-    let texto = `&#13;&#10;&#13;&#10;
---------------------------------------------------------------------------------------------------------------------------------------------&#13;&#10;
-    Em ${data}, ${mensagem.alerta.user.name}:&#13;&#10;
-    ${mensagem.alerta.texto}`;
+    let data = moment( mensagem.alerta.created_at ).format('DD/MM/YYYY [as] HH:MM');
     return `
         <div id="ctM_divResponderRenderized">
             <div class="form-group">
@@ -30,7 +27,7 @@ var getResponderBoxHtml = function(mensagem, config) {
             
             <div class="form-group">
                 <label for="titulo">Texto:</label>
-                <textarea name="texto" class="form-control" style="height: 400px" id="ctM_texto">${texto}</textarea>
+                <textarea name="texto" class="form-control" style="height: 400px" id="ctM_texto"></textarea>
             </div>
             
             <div class="form-group">

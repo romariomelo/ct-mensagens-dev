@@ -2,6 +2,7 @@ var caixaDeEntrada = require('./html/CaixaDeEntrada');
 var ultimasMensagens = require('./html/UltimasMensagens');
 var responder = require('./html/Responder');
 var ConversaHTML = require('./html/ConversaHTML');
+var mensagensEnviadasHTML = require('./html/MensagensEnviadasHTML');
 
 class CTMensagem {
 
@@ -43,12 +44,31 @@ class CTMensagem {
 
         $( elemento ).html( responder(mensagem), this.config );
 
+        tinymce.baseURL = this.config.base_url + '/js/tinymce';
+
+        tinymce.init({
+            selector: '#ctM_texto',
+            language: 'pt_BR',
+            height: 500,
+            menubar: false,
+            plugins: ['lists', 'code'],
+            toolbar: 'undo redo | formatselect | bold italic backcolor forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | code',
+            content_css: [
+                '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i'
+            ]
+        })
+
         $( '#ctM_divResponderRenderized' ).attr('data-codigo', mensagem.alerta.codigo);
 
     }
 
     renderConversa( conversa, elemento ) {
         $( elemento ).html( ConversaHTML( conversa, this.config ) );
+    }
+
+    renderMensagensEnviadas(elemento, mensagens) {
+        console.log( this.config );
+        $( elemento ).html( mensagensEnviadasHTML( mensagens, this.config ) );
     }
 
     setMensagens(mensagens) {
@@ -137,6 +157,8 @@ class CTMensagem {
 
             $('#ctM_btnEnviarResposta').click(function() {
 
+                tinymce.triggerSave();
+
                 let divResponder = $(this).closest('#ctM_divResponderRenderized');
 
                 let resposta = {
@@ -164,6 +186,10 @@ class CTMensagem {
 
             $('#bt-nova-mensagem').click(function() {
 
+                $('.nav-msg').removeAttr('disabled');
+
+                $(this).attr('disabled', 'disabled');
+
                 fn();
 
             });
@@ -181,6 +207,28 @@ class CTMensagem {
                 fn();
 
             });
+
+        } else {
+
+            console.error('Parâmetro deve ser função.');
+
+        }
+
+    }
+
+    btnMensagensEnviadasClick(fn) {
+
+        if (typeof fn === 'function') {
+
+            $('#bt-minhas-mensagens').click(function() {
+
+                $('.nav-msg').removeAttr('disabled');
+
+                $(this).attr('disabled', 'disabled');
+
+                fn();
+
+            })
 
         } else {
 

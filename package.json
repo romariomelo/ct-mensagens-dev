@@ -6,10 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.prod.js",
-    "prod": "webpack --config webpack.prod.js",
+    "prod": "webpack --config webpack.prod.js && npm run scss-prod",
     "start": "npm run build && node dist/index.js",
-    "dev": "webpack --config webpack.dev.js",
-    "watch": "npm run build -- --watch"
+    "dev": "webpack --config webpack.dev.js && npm run scss-dev",
+    "watch": "npm run build -- --watch",
+    "scss-prod": "node-sass --output-style compressed --sourcemap=none src/scss/ -o dist/css/",
+    "scss-dev": "node-sass --source-map true src/scss/ -o dist/css/",
+    "scss-watch": "node-sass --watch --source-map true src/scss/ -o dist/css/"
   },
   "author": "Romario Melo",
   "license": "MIT",

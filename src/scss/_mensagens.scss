@@ -84,6 +84,11 @@ li {
   }
 }
 
+.enviada-box {
+  padding: 15px 0;
+  border-top: thin solid #ddd;
+}
+
 @media (min-width: 768px) {
   .msg-header {
     text-align: left;

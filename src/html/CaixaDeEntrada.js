@@ -3,7 +3,7 @@ var fn = require("../funcoes/fn");
 
 caixaDeEntrada = function(mensagens, config) {
     if (mensagens.length === 0) {
-        return caixaDeEntradaVaziaHtml();
+        return caixaDeEntradaVaziaHtml(config);
     }
 
     var html = cabecalhoCaixaDeEntrada(config);
@@ -53,7 +53,7 @@ itemCaixaDeEntrada = function(mensagem, config) {
                 <h4 class="inbox-nome">${mensagem.alerta.user.name}</h4>
                 <h5 class="inbox-assunto">${titulo}</h5>
                 <p>${mensagem.alerta.texto}</p>
-                <small>${moment(mensagem.alerta.created_at).format('DD/MM/YYYY')}</small>
+                <small>${fn.getDataRelativa(mensagem.alerta.created_at)}</small>
             </a>
         </div>
     </div>
@@ -86,9 +86,11 @@ var btnResponser = function(mensagem) {
     `;
 }
 
-var caixaDeEntradaVaziaHtml = function() {
-    return `
-    <h2>Você não possui mensagens!</h2>
+var caixaDeEntradaVaziaHtml = function(config) {
+    return cabecalhoCaixaDeEntrada(config) + `
+    <div id="ctM_corpo_caixaDeEntrada">
+        <h2 style="text-align:center">Você não possui mensagens!</h2>
+    </div>
     `;
 }
 
@@ -104,7 +106,7 @@ var btnRetornar = function(config) {
 
 btnCaixaDeEntrada = function(config) {
     return `<div class="form-group  col-lg-2 col-md-3 col-sm-6">
-                    <button class="btn btn-white btn-block" disabled="" type="button" id="bt-caixa-de-entrada"><i class="fas fa-envelope"></i> Caixa de
+                    <button class="btn btn-white btn-block nav-msg" disabled="" type="button" id="bt-caixa-de-entrada"><i class="fas fa-envelope"></i> Caixa de
                         entrada
                     </button>
 
@@ -113,14 +115,14 @@ btnCaixaDeEntrada = function(config) {
 
 btnMensagensEnviadas = function(config) {
     return `<div class="form-group  col-lg-2 col-md-3 col-sm-6">
-                    <button class="btn btn-white btn-block" type="button" id="bt-minhas-mensagens"><i class="fas fa-share-square"></i> Mensagens enviadas
+                    <button class="btn btn-white btn-block nav-msg" type="button" id="bt-minhas-mensagens"><i class="fas fa-share-square"></i> Mensagens enviadas
                     </button>
                 </div>`;
 }
 
 btnNovaMensagem = function(config) {
     return `<div class="form-group  col-lg-2 col-md-3 col-sm-6">
-                    <button class="btn btn-white btn-block" type="button" id="bt-nova-mensagem"><i class="fa fa-plus"></i> Nova mensagem
+                    <button class="btn btn-white btn-block nav-msg" type="button" id="bt-nova-mensagem"><i class="fa fa-plus"></i> Nova mensagem
                     </button>
                 </div>`;
 }
