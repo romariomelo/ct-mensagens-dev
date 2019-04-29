@@ -2,6 +2,19 @@ var ToastHTML = require('./html/ToastHTML');
 
 class CTToast {
 
+    constructor(config) {
+
+        this.config = {
+            duration: 5000
+        }
+
+        if (typeof config === 'object' && config !== null ) {
+
+            Object.assign(this.config, config);
+
+        }
+    }
+
     showToast() {
         $('body').append( ToastHTML() );
         $('.ct-toast').show();
@@ -9,6 +22,10 @@ class CTToast {
         setTimeout(function() {
             _this.dismissToast();
         }, 5000);
+
+        $(document).on('click', '#toastClose', function(){
+            _this.dismissToast();
+        });
     }
 
     dismissToast() {

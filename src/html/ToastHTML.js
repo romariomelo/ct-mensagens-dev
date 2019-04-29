@@ -7,7 +7,7 @@ var getHTMLToast = function() {
 <div class="ct-toast fadeInUp animated">
 <a href="#">
         <div>
-        <div class="toast-close">
+        <div class="toast-close" id="toastClose">
         <i class="fa fa-times fa-2x"></i>
         </div>
         <div class="img">
