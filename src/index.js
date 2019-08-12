@@ -1,3 +1,7 @@
+/*
+    Romário Melo
+ */
+
 if ($) {
     if ($.summernote) {
         if ($.summernote.version) {
