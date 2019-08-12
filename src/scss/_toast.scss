@@ -1,7 +1,15 @@
+.toast-wrapper {
+  display: table-cell;
+  vertical-align: bottom;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
 .ct-toast {
   background-color: #23c6c8;
   color: #fff;
-  position: fixed;
+  position: relative;
   z-index: 25300;
   bottom: 15px;
   right: 15px;

@@ -88,6 +88,9 @@ li {
   padding: 15px 0;
   border-top: thin solid #ddd;
 }
+.tox-statusbar__branding {
+  visibility: hidden;
+}
 
 @media (min-width: 768px) {
   .msg-header {

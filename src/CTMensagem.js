@@ -44,19 +44,11 @@ class CTMensagem {
 
         $( elemento ).html( responder(mensagem), this.config );
 
-        tinymce.baseURL = this.config.base_url + '/js/tinymce';
+        //this.destroyEditor('#ctM_texto');
 
-        tinymce.init({
-            selector: '#ctM_texto',
-            language: 'pt_BR',
-            height: 500,
-            menubar: false,
-            plugins: ['lists', 'code'],
-            toolbar: 'undo redo | formatselect | bold italic backcolor forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | code',
-            content_css: [
-                '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i'
-            ]
-        })
+        //tinymce.baseURL = this.config.base_url + '/js/tinymce';
+
+        this.createEditor( '#ctM_texto' );
 
         $( '#ctM_divResponderRenderized' ).attr('data-codigo', mensagem.alerta.codigo);
 
@@ -157,7 +149,7 @@ class CTMensagem {
 
             $('#ctM_btnEnviarResposta').click(function() {
 
-                tinymce.triggerSave();
+                //tinymce.triggerSave();
 
                 let divResponder = $(this).closest('#ctM_divResponderRenderized');
 
@@ -266,6 +258,25 @@ class CTMensagem {
     getNovaMensagemButton() {
         return $('#bt-nova-mensagem');
     }
+
+    createEditor( ele ) {
+
+        $(ele).summernote({
+            toolbar: [
+                //[groupName, [list of button]]
+                ['style', ['undo','redo','bold', 'italic', 'underline', 'clear', 'forecolor']],
+                ['para', ['ul', 'paragraph', 'style']]
+            ],
+            popover: {},
+            lang: 'pt-BR',
+            height: '500px'
+        });
+
+    }
+
+    destroyEditor( ele ) {
+        $( ele ).summernote('destroy');
+    };
 
 }
 
