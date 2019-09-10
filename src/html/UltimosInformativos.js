@@ -20,27 +20,33 @@ ultimosInformativos = function(mensagens, config) {
 
 
 
-    let li = document.createElement('li');
-    let div = document.createElement('div');
-    div.setAttribute('class', 'text-center link-block');
-    let a = document.createElement('a');
-    a.setAttribute('href', config.base_url +'/avisos/informativos');
-    a.setAttribute('class', 'dropdown-item');
-    a.innerHTML = '<strong>Ver todas</strong> <i class="fa fa-angle-right"></i>';
+    let listElement = [];
 
-    div.appendChild(a);
 
 
     mensagens.forEach((mensagem, index) => {
         if ( index > 4 ) {
             return;
         }
-        li.appendChild( itemUltimosInformativos(mensagem, config) );
+        listElement[listElement.length] = itemUltimosInformativos(mensagem, config);
+        let liSeparador = document.createElement('li');
+        liSeparador.setAttribute('role', 'separator')
+        liSeparador.setAttribute('class','dropdown-divider divider');
+        listElement[listElement.length] = liSeparador;
     });
 
-    li.appendChild(div);
+    let liVerMais = document.createElement('li');
+    liVerMais.setAttribute('class', 'text-center link-block');
+    let a = document.createElement('a');
+    a.setAttribute('href', config.base_url +'/avisos/informativos');
+    a.setAttribute('class', 'dropdown-item');
+    a.innerHTML = '<strong>Ver todas</strong> <i class="fa fa-angle-right"></i>';
 
-    return li;
+    liVerMais.appendChild(a);
+
+    listElement[listElement.length] = liVerMais;
+
+    return listElement;
 }
 
 itemUltimosInformativos = function(mensagem, config) {
@@ -81,15 +87,12 @@ itemUltimosInformativos = function(mensagem, config) {
     divTexto.setAttribute('style', 'width:80%');
     divTexto.innerHTML = `Mensagem de <strong>${mensagem.alerta.user.name}</strong>: ${mensagem.alerta.titulo}.<br><small class="text-muted">Em ` + moment(mensagem.alerta.created_at).format('DD/MM/YYYY') + `</small>`;
 
-    let liSeparador = document.createElement('li');
-    liSeparador.setAttribute('role', 'separator')
-    liSeparador.setAttribute('class','dropdown-divider divider');
+
 
     a.appendChild(img);
     divDropDown.appendChild(a);
     divDropDown.appendChild(divTexto);
     li.appendChild(divDropDown);
-    li.appendChild(liSeparador);
     return li;
 
 }
