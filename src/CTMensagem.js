@@ -38,6 +38,16 @@ class CTMensagem {
         $( elemento ).html( ultimasMensagens( this.mensagens, this.config ) );
     }
 
+    renderUltimosInformativos( elemento ) {
+        $( elemento ).addClass('ct-ultimas-mensagens');
+
+        if ( ! Array.isArray(this.mensagens) ) {
+            $( elemento ).html('<p>Mensagens não encontradas, favor recarregue a página!</p>');
+        }
+
+        $( elemento ).html( ultimasMensagens( this.mensagens, this.config ) );
+    }
+
     renderResponder( mensagem, elemento ) {
 
         $( elemento ).addClass('ct-mensagem-reply');
