@@ -47,7 +47,7 @@ class CTMensagem {
             $( elemento ).html('<p>Mensagens não encontradas, favor recarregue a página!</p>');
         }
 
-        $( elemento ).html( ultimosInformativos( this.informativos, this.config ) );
+        $( elemento ).appendChild( ultimosInformativos( this.informativos, this.config ) );
     }
 
     renderResponder( mensagem, elemento ) {

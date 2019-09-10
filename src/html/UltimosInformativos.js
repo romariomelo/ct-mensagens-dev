@@ -1,25 +1,41 @@
 ultimosInformativos = function(mensagens, config) {
-    var html = '';
-    mensagens.forEach((mensagem, index) => {
-        if ( index > 4 ) {
-            return;
-        }
-        html += itemUltimasMensagens(mensagem, config);
-    })
-    html += `
-            <li>
-                <div class="text-center link-block">
-                    <a href="${config.base_url}/avisos/informativos" class="dropdown-item">
-                        <strong>Ver todas</strong>
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </div>
-            </li>
-            `
-    return html;
+    // var html = '';
+    // mensagens.forEach((mensagem, index) => {
+    //     if ( index > 4 ) {
+    //         return;
+    //     }
+    //     html += itemUltimosInformativos(mensagem, config);
+    // })
+    // html += `
+    //         <li>
+    //             <div class="text-center link-block">
+    //                 <a href="${config.base_url}/avisos/informativos" class="dropdown-item">
+    //                     <strong>Ver todas</strong>
+    //                     <i class="fa fa-angle-right"></i>
+    //                 </a>
+    //             </div>
+    //         </li>
+    //         `
+    // return html;
+
+    let items = itemUltimosInformativos(mensagem, config);
+
+    let li = document.createElement('li');
+    let div = document.createElement('div');
+    div.setAttribute('class', 'text-center link-block');
+    let a = document.createElement('a');
+    a.setAttribute('href', config.base_url +'/avisos/informativos');
+    a.setAttribute('class', 'dropdown-item');
+    a.innerHTML = '<strong>Ver todas</strong> <i class="fa fa-angle-right"></i>';
+
+    div.appendChild(a);
+
+    li.appendChild(div);
+
+    return li;
 }
 
-itemUltimasMensagens = function(mensagem, config) {
+itemUltimosInformativos = function(mensagem, config) {
     var classNoRead = (mensagem.read_at === null) ? 'no-read' : ''
     var foto = (mensagem.alerta.user.foto === null) ? config.base_url + '/images/sem_foto.jpg' : config.webservice_url + '/Usuario/' + mensagem.alerta.user.foto
     // var html = `
