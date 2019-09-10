@@ -35,7 +35,7 @@ class CTMensagem {
             $( elemento ).html('<p>Mensagens não encontradas, favor recarregue a página!</p>');
         }
 
-        $( elemento ).html( ultimasMensagens( this.mensagens, this.config ) );
+        $( elemento ).html( ultimasMensagens(  this.somenteMensagens(), this.config ) );
     }
 
     renderUltimosInformativos( elemento ) {
@@ -45,7 +45,7 @@ class CTMensagem {
             $( elemento ).html('<p>Mensagens não encontradas, favor recarregue a página!</p>');
         }
 
-        $( elemento ).html( ultimasMensagens( this.mensagens, this.config ) );
+        $( elemento ).html( ultimasMensagens( this.somenteInformativos(), this.config ) );
     }
 
     renderResponder( mensagem, elemento ) {
@@ -287,6 +287,24 @@ class CTMensagem {
     destroyEditor( ele ) {
         $( ele ).summernote('destroy');
     };
+
+    somenteInformativos() {
+        return this.filtrarMenssagensInformativos('INFORMATIVOS');
+    }
+
+    somenteMensagens() {
+        return this.filtrarMenssagensInformativos('MENSAGEM');
+    }
+
+    filtrarMenssagensInformativos(tipo) {
+        var retorno = [];
+        this.mensagens.forEach(function(e) {
+            if (e.alerta.tipo === tipo) {
+                retorno[retorno.length] = e;
+            }
+        });
+        return retorno;
+    }
 
 }
 
