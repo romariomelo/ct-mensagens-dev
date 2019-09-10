@@ -1,5 +1,6 @@
 var caixaDeEntrada = require('./html/CaixaDeEntrada');
 var ultimasMensagens = require('./html/UltimasMensagens');
+var ultimosInformativos = require('./html/UltimosInformativos');
 var responder = require('./html/Responder');
 var ConversaHTML = require('./html/ConversaHTML');
 var mensagensEnviadasHTML = require('./html/MensagensEnviadasHTML');
@@ -46,7 +47,7 @@ class CTMensagem {
             $( elemento ).html('<p>Mensagens não encontradas, favor recarregue a página!</p>');
         }
 
-        $( elemento ).html( ultimasMensagens( this.informativos, this.config ) );
+        $( elemento ).html( ultimosInformativos( this.informativos, this.config ) );
     }
 
     renderResponder( mensagem, elemento ) {
