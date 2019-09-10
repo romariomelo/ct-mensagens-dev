@@ -53,8 +53,8 @@ itemUltimasMensagens = function(mensagem, config) {
     img.setAttribute('src', foto);
 
     let divTexto = document.createElement('div');
-    divTexto.set('class', 'pull-right');
-    divTexto.set('style', 'width:80%');
+    divTexto.setAttribute('class', 'pull-right');
+    divTexto.setAttribute('style', 'width:80%');
     divTexto.innerHTML(`Mensagem de <strong>${mensagem.alerta.user.name}</strong>: ${mensagem.alerta.titulo}.<br><small class="text-muted">Em ` + moment(mensagem.alerta.created_at).format('DD/MM/YYYY') + `</small>`);
 
     let liSeparador = document.createElement('li');
