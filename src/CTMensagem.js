@@ -81,6 +81,7 @@ class CTMensagem {
             return;
         }
 
+        this.informativos = this.somenteInformativos( mensagens );
         this.mensagens = this.somenteMensagens( mensagens );
     }
 
