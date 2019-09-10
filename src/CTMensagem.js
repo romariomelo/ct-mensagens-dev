@@ -272,6 +272,25 @@ class CTMensagem {
         $('#iboxCaixaDeEntrada h5').text(titulo);
     }
 
+    getQtdInformativosNaoLidos() {
+        let qtd = 0;
+        this.informativos.forEach(function(e) {
+            if (e.read_at === null) {
+                qtd++;
+            }
+        });
+        return qtd;
+    }
+    getQtdMensagensNaoLidas() {
+        let qtd = 0;
+        this.mensagens.forEach(function(e) {
+            if (e.read_at === null) {
+                qtd++;
+            }
+        });
+        return qtd;
+    }
+
     /* BUTTONS */
 
     getCaixaDeEntradaButton() {
