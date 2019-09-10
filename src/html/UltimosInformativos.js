@@ -55,7 +55,7 @@ itemUltimasMensagens = function(mensagem, config) {
     let divTexto = document.createElement('div');
     divTexto.setAttribute('class', 'pull-right');
     divTexto.setAttribute('style', 'width:80%');
-    divTexto.innerHTML(`Mensagem de <strong>${mensagem.alerta.user.name}</strong>: ${mensagem.alerta.titulo}.<br><small class="text-muted">Em ` + moment(mensagem.alerta.created_at).format('DD/MM/YYYY') + `</small>`);
+    divTexto.innerHTML = `Mensagem de <strong>${mensagem.alerta.user.name}</strong>: ${mensagem.alerta.titulo}.<br><small class="text-muted">Em ` + moment(mensagem.alerta.created_at).format('DD/MM/YYYY') + `</small>`;
 
     let liSeparador = document.createElement('li');
     liSeparador.setAttribute('role', 'separator')
