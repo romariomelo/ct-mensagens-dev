@@ -10,6 +10,7 @@ class CTMensagem {
 
         this.config = {};
         this.mensagens = [];
+        this.informativos = [];
 
         if ( config !== null ) {
             this.config = Object.assign(this.config, config);
@@ -35,7 +36,7 @@ class CTMensagem {
             $( elemento ).html('<p>Mensagens não encontradas, favor recarregue a página!</p>');
         }
 
-        $( elemento ).html( ultimasMensagens(  this.somenteMensagens(), this.config ) );
+        $( elemento ).html( ultimasMensagens(  this.mensagens, this.config ) );
     }
 
     renderUltimosInformativos( elemento ) {
@@ -45,7 +46,7 @@ class CTMensagem {
             $( elemento ).html('<p>Mensagens não encontradas, favor recarregue a página!</p>');
         }
 
-        $( elemento ).html( ultimasMensagens( this.somenteInformativos(), this.config ) );
+        $( elemento ).html( ultimasMensagens( this.informativos, this.config ) );
     }
 
     renderResponder( mensagem, elemento ) {
@@ -80,7 +81,7 @@ class CTMensagem {
             return;
         }
 
-        this.mensagens = mensagens;
+        this.mensagens = this.somenteMensagens( mensagens );
     }
 
     getMensagens() {
@@ -288,17 +289,17 @@ class CTMensagem {
         $( ele ).summernote('destroy');
     };
 
-    somenteInformativos() {
-        return this.filtrarMenssagensInformativos('INFORMATIVOS');
+    somenteInformativos(avisos) {
+        return this.filtrarMenssagensInformativos( avisos, 'INFORMATIVOS');
     }
 
-    somenteMensagens() {
-        return this.filtrarMenssagensInformativos('MENSAGEM');
+    somenteMensagens(avisos) {
+        return this.filtrarMenssagensInformativos( avisos,'MENSAGEM');
     }
 
-    filtrarMenssagensInformativos(tipo) {
+    filtrarMenssagensInformativos(avisos, tipo) {
         var retorno = [];
-        this.mensagens.forEach(function(e) {
+        avisos.forEach(function(e) {
             if (e.alerta.tipo === tipo) {
                 retorno[retorno.length] = e;
             }
