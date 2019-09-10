@@ -49,11 +49,14 @@ class CTMensagem {
 
         let listElements = ultimosInformativos( this.informativos, this.config );
 
+        /*
         listElements.forEach(function(e){
 
             $( elemento ).append( e );
 
         })
+
+         */
     }
 
     renderResponder( mensagem, elemento ) {
