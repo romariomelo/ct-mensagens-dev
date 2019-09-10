@@ -50,6 +50,8 @@ class CTMensagem {
 
         let listElements = ultimosInformativos( this.informativos, this.config );
 
+        $( elemento ).html('');
+
         listElements.forEach(function(e){
 
             $( elemento ).append( e );
