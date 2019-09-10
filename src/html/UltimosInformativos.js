@@ -18,7 +18,7 @@ ultimosInformativos = function(mensagens, config) {
     //         `
     // return html;
 
-    let items = itemUltimosInformativos(mensagem, config);
+
 
     let li = document.createElement('li');
     let div = document.createElement('div');
@@ -29,6 +29,14 @@ ultimosInformativos = function(mensagens, config) {
     a.innerHTML = '<strong>Ver todas</strong> <i class="fa fa-angle-right"></i>';
 
     div.appendChild(a);
+
+
+    mensagens.forEach((mensagem, index) => {
+        if ( index > 4 ) {
+            return;
+        }
+        li.appendChild( itemUltimosInformativos(mensagem, config) );
+    });
 
     li.appendChild(div);
 
