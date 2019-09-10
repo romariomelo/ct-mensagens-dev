@@ -46,6 +46,8 @@ ultimosInformativos = function(mensagens, config) {
 
     listElement[listElement.length] = liVerMais;
 
+    console.log('ultimosInformativos');
+    console.log(listElement);
     return listElement;
 }
 
@@ -93,6 +95,8 @@ itemUltimosInformativos = function(mensagem, config) {
     divDropDown.appendChild(a);
     divDropDown.appendChild(divTexto);
     li.appendChild(divDropDown);
+    console.log('itemUltimosInformativos')
+    console.log(li);
     return li;
 
 }

@@ -41,6 +41,7 @@ class CTMensagem {
     }
 
     renderUltimosInformativos( elemento ) {
+        console.log('renderUltimosInformativos');
         $( elemento ).addClass('ct-ultimas-mensagens');
 
         if ( ! Array.isArray(this.mensagens) ) {
@@ -49,14 +50,13 @@ class CTMensagem {
 
         let listElements = ultimosInformativos( this.informativos, this.config );
 
-        /*
         listElements.forEach(function(e){
 
             $( elemento ).append( e );
 
         })
 
-         */
+
     }
 
     renderResponder( mensagem, elemento ) {
