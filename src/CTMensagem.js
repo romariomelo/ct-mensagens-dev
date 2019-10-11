@@ -87,7 +87,7 @@ class CTMensagem {
 
     setMensagens(mensagens) {
 
-        if ( ! Array.isArray(this.mensagens) ) {
+        if ( ! Array.isArray(mensagens) ) {
             console.warn('Mensagens deve ser um Array.');
             return;
         }
